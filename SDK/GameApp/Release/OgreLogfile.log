@@ -1,0 +1,57 @@
+21:42:48: Creating resource group General
+21:42:48: Creating resource group Internal
+21:42:48: Creating resource group Autodetect
+21:42:48: SceneManagerFactory for type 'DefaultSceneManager' registered.
+21:42:48: Registering ResourceManager for type Material
+21:42:48: Registering ResourceManager for type Mesh
+21:42:48: Registering ResourceManager for type Skeleton
+21:42:48: MovableObjectFactory for type 'ParticleSystem' registered.
+21:42:48: OverlayElementFactory for type Panel registered.
+21:42:48: OverlayElementFactory for type BorderPanel registered.
+21:42:48: OverlayElementFactory for type TextArea registered.
+21:42:48: Registering ResourceManager for type Font
+21:42:48: ArchiveFactory for archive type FileSystem registered.
+21:42:48: ArchiveFactory for archive type Zip registered.
+21:42:48: DDS codec registering
+21:42:48: FreeImage version: 3.13.1
+21:42:48: This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
+21:42:48: Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,g3,sgi,exr,j2k,j2c,jp2,pfm,pct,pict,pic,bay,bmq,cr2,crw,cs1,dc2,dcr,dng,erf,fff,hdr,k25,kdc,mdc,mos,mrw,nef,orf,pef,pxn,raf,raw,rdc,sr2,srf,arw,3fr,cine,ia,kc2,mef,nrw,qtk,rw2,sti,drf,dsc,ptx,cap,iiq,rwz
+21:42:48: Registering ResourceManager for type HighLevelGpuProgram
+21:42:48: Registering ResourceManager for type Compositor
+21:42:48: MovableObjectFactory for type 'Entity' registered.
+21:42:48: MovableObjectFactory for type 'Light' registered.
+21:42:48: MovableObjectFactory for type 'BillboardSet' registered.
+21:42:48: MovableObjectFactory for type 'ManualObject' registered.
+21:42:48: MovableObjectFactory for type 'BillboardChain' registered.
+21:42:48: MovableObjectFactory for type 'RibbonTrail' registered.
+21:42:48: Loading library .\RenderSystem_Direct3D9
+21:42:48: Installing plugin: D3D9 RenderSystem
+21:42:48: D3D9 : Direct3D9 Rendering Subsystem created.
+21:42:48: D3D9: Driver Detection Starts
+21:42:48: D3D9: Driver Detection Ends
+21:42:48: Plugin successfully installed
+21:42:48: *-*-* OGRE Initialising
+21:42:48: *-*-* Version 1.7.2 (Cthugha)
+21:42:48: D3D9 : RenderSystem Option: Allow NVPerfHUD = No
+21:42:48: D3D9 : RenderSystem Option: FSAA = 0
+21:42:48: D3D9 : RenderSystem Option: Floating-point mode = Fastest
+21:42:48: D3D9 : RenderSystem Option: Full Screen = Yes
+21:42:48: D3D9 : RenderSystem Option: Rendering Device = Monitor-1-ATI Radeon HD 5700 Series
+21:42:48: D3D9 : RenderSystem Option: Resource Creation Policy = Create on all devices
+21:42:48: D3D9 : RenderSystem Option: VSync = No
+21:42:48: D3D9 : RenderSystem Option: VSync Interval = 1
+21:42:48: D3D9 : RenderSystem Option: Video Mode = 800 x 600 @ 32-bit colour
+21:42:48: D3D9 : RenderSystem Option: sRGB Gamma Conversion = No
+21:42:54: Shutdown OGRE...
+21:42:54: *-*-* OGRE Shutdown
+21:42:54: Unregistering ResourceManager for type Compositor
+21:42:54: Unregistering ResourceManager for type Font
+21:42:54: Unregistering ResourceManager for type Skeleton
+21:42:54: Unregistering ResourceManager for type Mesh
+21:42:54: Unregistering ResourceManager for type HighLevelGpuProgram
+21:42:54: Uninstalling plugin: D3D9 RenderSystem
+21:42:54: D3D9 : Shutting down cleanly.
+21:42:54: D3D9 : Direct3D9 Rendering Subsystem destroyed.
+21:42:54: Plugin successfully uninstalled
+21:42:54: Unloading library .\RenderSystem_Direct3D9
+21:42:54: Unregistering ResourceManager for type Material

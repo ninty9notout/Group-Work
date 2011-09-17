@@ -1,0 +1,242 @@
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGUID>{C976F6A0-D880-4E41-9574-7229A7BDCDFC}</ProjectGUID>
+    <SccProjectName />
+    <SccLocalPath />
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+    <PropertyGroup>
+      <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\bin\Debug\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">SampleBrowser.dir\Debug\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">SampleBrowser_d</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.exe</TargetExt>
+      <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\bin\Release\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">SampleBrowser.dir\Release\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">SampleBrowser</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.exe</TargetExt>
+      <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>../../boost_1_42;../../include/OGRE;../../include;../../include/OGRE/PlugIns/PCZSceneManager;../../include/OGRE/PlugIns/OctreeZone;../../include/OIS;../../Common/include;../../include/OGRE/RTShaderSystem;../../Samples/Browser/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;BOOST_ALL_NO_LIB;USE_RTSHADER_SYSTEM;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>Debug</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>../../bin/Debug/SampleBrowser_d.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>../../boost_1_42;../../include/OGRE;../../include;../../include/OGRE/PlugIns/PCZSceneManager;../../include/OGRE/PlugIns/OctreeZone;../../include/OIS;../../Common/include;../../include/OGRE/RTShaderSystem;../../Samples/Browser/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>../../boost_1_42;../../include/OGRE;../../include;../../include/OGRE/PlugIns/PCZSceneManager;../../include/OGRE/PlugIns/OctreeZone;../../include/OIS;../../Common/include;../../include/OGRE/RTShaderSystem;../../Samples/Browser/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </Midl>
+    <Link>
+      <AdditionalOptions> /machine:X86 /debug %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\..\lib\debug\OgreMain_d.lib;..\..\boost_1_42\lib\libboost_thread-vc100-mt-gd-1_42.lib;..\..\boost_1_42\lib\libboost_date_time-vc100-mt-gd-1_42.lib;..\..\lib\debug\OgreRTShaderSystem_d.lib;..\..\lib\debug\OIS_d.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>../../lib/Debug/SampleBrowser_d.lib</ImportLibrary>
+      <ProgramDataBaseFileName>../../bin/Debug/SampleBrowser_d.pdb</ProgramDataBaseFileName>
+      <StackReserveSize>10000000</StackReserveSize>
+      <SubSystem>Windows</SubSystem>
+      <Version>0.0</Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>../../boost_1_42;../../include/OGRE;../../include;../../include/OGRE/PlugIns/PCZSceneManager;../../include/OGRE/PlugIns/OctreeZone;../../include/OIS;../../Common/include;../../include/OGRE/RTShaderSystem;../../Samples/Browser/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BOOST_ALL_NO_LIB;USE_RTSHADER_SYSTEM;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>Release</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>../../bin/Release/SampleBrowser.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>../../boost_1_42;../../include/OGRE;../../include;../../include/OGRE/PlugIns/PCZSceneManager;../../include/OGRE/PlugIns/OctreeZone;../../include/OIS;../../Common/include;../../include/OGRE/RTShaderSystem;../../Samples/Browser/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>../../boost_1_42;../../include/OGRE;../../include;../../include/OGRE/PlugIns/PCZSceneManager;../../include/OGRE/PlugIns/OctreeZone;../../include/OIS;../../Common/include;../../include/OGRE/RTShaderSystem;../../Samples/Browser/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </Midl>
+    <Link>
+      <AdditionalOptions> /machine:X86 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\..\lib\release\OgreMain.lib;..\..\boost_1_42\lib\libboost_thread-vc100-mt-1_42.lib;..\..\boost_1_42\lib\libboost_date_time-vc100-mt-1_42.lib;..\..\lib\release\OgreRTShaderSystem.lib;..\..\lib\release\OIS.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <ImportLibrary>../../lib/Release/SampleBrowser.lib</ImportLibrary>
+      <ProgramDataBaseFileName>../../bin/Release/SampleBrowser.pdb</ProgramDataBaseFileName>
+      <StackReserveSize>10000000</StackReserveSize>
+      <SubSystem>Windows</SubSystem>
+      <Version>0.0</Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\SampleBrowser.h" />
+    <ClInclude Include="include\FileSystemLayerImpl.h" />
+    <ClInclude Include="..\Common\include\Sample.h" />
+    <ClInclude Include="..\Common\include\SampleContext.h" />
+    <ClInclude Include="..\Common\include\SamplePlugin.h" />
+    <ClInclude Include="..\Common\include\SdkCameraMan.h" />
+    <ClInclude Include="..\Common\include\SdkSample.h" />
+    <ClInclude Include="..\Common\include\SdkTrays.h" />
+    <ClInclude Include="..\Common\include\OgreStaticPluginLoader.h" />
+    <ClInclude Include="..\Common\include\FileSystemLayer.h" />
+    <ClCompile Include="src\SampleBrowser.cpp" />
+    <ClCompile Include="src\FileSystemLayerImpl_WIN32.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../Samples/BSP/Sample_BSP.vcxproj">
+      <Project>3E4779C3-C89E-4B7F-AD83-28251B317415</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/CameraTrack/Sample_CameraTrack.vcxproj">
+      <Project>1C1CFA83-52B2-4688-AEDF-846A79BADABF</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/Compositor/Sample_Compositor.vcxproj">
+      <Project>FCB5761D-CEA3-4E00-8C5C-DC2694004DF7</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/CelShading/Sample_CelShading.vcxproj">
+      <Project>0BD752AA-1CA9-4CD3-84B4-697B2F3FDDF7</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/BezierPatch/Sample_BezierPatch.vcxproj">
+      <Project>432F4496-2E7F-4355-BFC8-20AAC78B41E8</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/Dot3Bump/Sample_Dot3Bump.vcxproj">
+      <Project>86B03F64-B72C-4CEE-BEEE-18128CD77145</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/DynTex/Sample_DynTex.vcxproj">
+      <Project>037B418E-8E93-4769-B810-6BFF3CA6B4EE</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/FacialAnimation/Sample_FacialAnimation.vcxproj">
+      <Project>152114B5-945D-4E34-9007-1337B0B51E91</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/Fresnel/Sample_Fresnel.vcxproj">
+      <Project>8C72C676-C19B-4A0D-9DD1-6CF0C345D53E</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/Grass/Sample_Grass.vcxproj">
+      <Project>6C1B326D-99E1-4320-A853-699300E85E18</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/Instancing/Sample_Instancing.vcxproj">
+      <Project>0E07A93B-E6C0-474D-84E2-A9206743924D</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/Lighting/Sample_Lighting.vcxproj">
+      <Project>EEE4A7FB-5C58-4584-91EA-4B1FD87D3E09</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/OceanDemo/Sample_Ocean.vcxproj">
+      <Project>6A7FC3F2-09D9-4879-8831-FC20F09C79FF</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/ParticleFX/Sample_ParticleFX.vcxproj">
+      <Project>4FDD39B6-9BD7-44D9-8037-5C0CE42FF30E</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/ShaderSystem/Sample_ShaderSystem.vcxproj">
+      <Project>F7671C3D-C296-4159-B23E-7039D6241BF9</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/Shadows/Sample_Shadows.vcxproj">
+      <Project>8262CE12-520E-4570-8942-A98B8E8889DB</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/SkeletalAnimation/Sample_SkeletalAnimation.vcxproj">
+      <Project>F1D80B48-06CD-46EE-9209-44B824530A30</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/SkyBox/Sample_SkyBox.vcxproj">
+      <Project>4CA68C89-D1EE-4F93-9B45-B5148F6AE9C9</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/SkyDome/Sample_SkyDome.vcxproj">
+      <Project>46BEF895-5A97-4725-B857-07E485D60C3D</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/CubeMapping/Sample_CubeMapping.vcxproj">
+      <Project>7717C2F6-3A51-40AE-8D36-F72C803DD12B</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/Character/Sample_Character.vcxproj">
+      <Project>88D64594-EA43-4DAB-84B2-5E74D0619EA8</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/SkyPlane/Sample_SkyPlane.vcxproj">
+      <Project>F215A9EF-206E-4652-AB64-F22B9CFF1D60</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/Smoke/Sample_Smoke.vcxproj">
+      <Project>41A7C130-54FF-431F-8264-AA8233C7DB88</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/SphereMapping/Sample_SphereMapping.vcxproj">
+      <Project>0706C30B-27AC-4E95-B0C1-ED225C90EE05</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/Terrain/Sample_Terrain.vcxproj">
+      <Project>41F65785-596E-4812-A3FF-0C97AC5D0B96</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/TextureFX/Sample_TextureFX.vcxproj">
+      <Project>B1B0E3D6-9BDE-4390-8C47-AB26BD18B298</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/Transparency/Sample_Transparency.vcxproj">
+      <Project>1B6D7086-B8B1-481C-864A-3B1063C14292</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/VolumeTex/Sample_VolumeTex.vcxproj">
+      <Project>1A0EA572-46F3-44F6-A9A8-D2500DDFA74C</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/Water/Sample_Water.vcxproj">
+      <Project>72849293-7F3E-45C3-A31A-F44F7A95F659</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/DeferredShading/Sample_DeferredShading.vcxproj">
+      <Project>60BCD09E-69C5-4A31-A2AA-ED2416F27ADC</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/Isosurf/Sample_Isosurf.vcxproj">
+      <Project>03EE9987-1DC6-4E97-B784-0BC782C60AB7</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../Samples/ParticleGS/Sample_ParticleGS.vcxproj">
+      <Project>79721362-0FCC-4991-9A93-0CB9C57586D4</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,39 @@
+﻿Build started 15/09/2011 22:17:49.
+     1>Project "E:\SDK\GameApp\GameApp\GameApp.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release\GameApp.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IE:\SDK\Ogre\include /IE:\SDK\Ogre\include\OIS /IE:\SDK\Ogre\include\OGRE /IE:\SDK\Ogre\Samples\Common\include /IE:\SDK\Ogre\boost_1_42 /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt AdvancedOgreFramework.cpp AppStateManager.cpp DemoApp.cpp GameState.cpp MenuState.cpp PauseState.cpp main.cpp
+         AdvancedOgreFramework.cpp
+         AppStateManager.cpp
+         DemoApp.cpp
+         GameState.cpp
+         MenuState.cpp
+         PauseState.cpp
+         main.cpp
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\SDK\GameApp\Release\GameApp.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:E:\SDK\Ogre\lib\Release /LIBPATH:E:\SDK\Ogre\boost_1_42\lib OgreTerrain.lib OgreMain.lib OIS.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\GameApp.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"E:\SDK\GameApp\Release\GameApp.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\SDK\GameApp\Release\GameApp.lib" /MACHINE:X86 Release\AdvancedOgreFramework.obj
+         Release\AppStateManager.obj
+         Release\DemoApp.obj
+         Release\DotSceneLoader.obj
+         Release\GameState.obj
+         Release\main.obj
+         Release\MenuState.obj
+         Release\PauseState.obj
+         Generating code
+         Finished generating code
+         GameApp.vcxproj -> E:\SDK\GameApp\Release\GameApp.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"E:\SDK\GameApp\Release\GameApp.exe;#1" /manifest Release\GameApp.exe.intermediate.manifest
+       PostBuildEvent:
+         copy "E:\SDK\GameApp\Release\\GameApp.exe" "E:\SDK\Ogre\Bin\Release"
+         :VCEnd
+                 1 file(s) copied.
+       FinalizeBuildStatus:
+         Deleting file "Release\GameApp.unsuccessfulbuild".
+         Touching "Release\GameApp.lastbuildstate".
+     1>Done Building Project "E:\SDK\GameApp\GameApp\GameApp.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:44.05
