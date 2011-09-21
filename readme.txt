@@ -1,1 +1,1 @@
-This is what you download
+Copy the 'SDK' directory to the root of a E: drive to start
