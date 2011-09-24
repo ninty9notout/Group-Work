@@ -1,0 +1,17 @@
+material Placeholder/Skybox1
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+
+			texture_unit
+			{
+				cubic_texture skybox1_FR.png skybox1_BK.png skybox1_LF.png skybox1_RT.png skybox1_UP.png skybox1_DN.png separateUV
+				tex_address_mode clamp
+			}
+		}
+	}
+}

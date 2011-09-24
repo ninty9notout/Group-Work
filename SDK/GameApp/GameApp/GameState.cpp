@@ -17,8 +17,6 @@ GameState::GameState()
     m_bRMouseDown       = false;
     m_bQuit             = false;
     m_bSettingsMode     = false;
-
-    m_pDetailsPanel		= 0;
 }
 
 //|||||||||||||||||||||||||||||||||||||||||||||||
@@ -86,26 +84,8 @@ void GameState::exit()
 
 void GameState::createScene()
 {
-    m_pSceneMgr->createLight("Light")->setPosition(75,75,75);
-
-    DotSceneLoader* pDotSceneLoader = new DotSceneLoader();
-    pDotSceneLoader->parseDotScene("CubeScene.xml", "General", m_pSceneMgr, m_pSceneMgr->getRootSceneNode());
-    delete pDotSceneLoader;
-
-    m_pSceneMgr->getEntity("Cube01")->setQueryFlags(CUBE_MASK);
-    m_pSceneMgr->getEntity("Cube02")->setQueryFlags(CUBE_MASK);
-    m_pSceneMgr->getEntity("Cube03")->setQueryFlags(CUBE_MASK);
-
-    m_pOgreHeadEntity = m_pSceneMgr->createEntity("Cube", "ogrehead.mesh");
-    m_pOgreHeadEntity->setQueryFlags(OGRE_HEAD_MASK);
-    m_pOgreHeadNode = m_pSceneMgr->getRootSceneNode()->createChildSceneNode("CubeNode");
-    m_pOgreHeadNode->attachObject(m_pOgreHeadEntity);
-    m_pOgreHeadNode->setPosition(Vector3(0, 0, -25));
-
-    m_pOgreHeadMat = m_pOgreHeadEntity->getSubEntity(1)->getMaterial();
-    m_pOgreHeadMatHigh = m_pOgreHeadMat->clone("OgreHeadMatHigh");
-    m_pOgreHeadMatHigh->getTechnique(0)->getPass(0)->setAmbient(1, 0, 0);
-    m_pOgreHeadMatHigh->getTechnique(0)->getPass(0)->setDiffuse(1, 0, 0, 0);
+	//SCENE INFORMATION
+	m_pSceneMgr->setSkyBox(true, "Placeholder/Skybox1");
 }
 
 //|||||||||||||||||||||||||||||||||||||||||||||||
@@ -135,19 +115,6 @@ bool GameState::keyPressed(const OIS::KeyEvent &keyEventRef)
         return true;
     }
 
-    if(OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_I))
-    {
-        if(m_pDetailsPanel->getTrayLocation() == OgreBites::TL_NONE)
-        {
-            OgreFramework::getSingletonPtr()->m_pTrayMgr->moveWidgetToTray(m_pDetailsPanel, OgreBites::TL_TOPLEFT, 0);
-            m_pDetailsPanel->show();
-        }
-        else
-        {
-            OgreFramework::getSingletonPtr()->m_pTrayMgr->removeWidgetFromTray(m_pDetailsPanel);
-            m_pDetailsPanel->hide();
-        }
-    }
 
     if(OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_TAB))
     {
@@ -155,10 +122,6 @@ bool GameState::keyPressed(const OIS::KeyEvent &keyEventRef)
         return true;
     }
 
-    if(m_bSettingsMode && OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_RETURN) ||
-        OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_NUMPADENTER))
-    {
-    }
 
     if(!m_bSettingsMode || (m_bSettingsMode && !OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_O)))
         OgreFramework::getSingletonPtr()->keyPressed(keyEventRef);
@@ -301,29 +264,6 @@ void GameState::update(double timeSinceLastFrame)
         return;
     }
 
-    if(!OgreFramework::getSingletonPtr()->m_pTrayMgr->isDialogVisible())
-    {
-        if(m_pDetailsPanel->isVisible())
-        {
-            m_pDetailsPanel->setParamValue(0, Ogre::StringConverter::toString(m_pCamera->getDerivedPosition().x));
-            m_pDetailsPanel->setParamValue(1, Ogre::StringConverter::toString(m_pCamera->getDerivedPosition().y));
-            m_pDetailsPanel->setParamValue(2, Ogre::StringConverter::toString(m_pCamera->getDerivedPosition().z));
-            m_pDetailsPanel->setParamValue(3, Ogre::StringConverter::toString(m_pCamera->getDerivedOrientation().w));
-            m_pDetailsPanel->setParamValue(4, Ogre::StringConverter::toString(m_pCamera->getDerivedOrientation().x));
-            m_pDetailsPanel->setParamValue(5, Ogre::StringConverter::toString(m_pCamera->getDerivedOrientation().y));
-            m_pDetailsPanel->setParamValue(6, Ogre::StringConverter::toString(m_pCamera->getDerivedOrientation().z));
-            if(m_bSettingsMode)
-                m_pDetailsPanel->setParamValue(7, "Buffered Input");
-            else
-                m_pDetailsPanel->setParamValue(7, "Un-Buffered Input");
-        }
-    }
-
-    m_MoveScale = m_MoveSpeed   * timeSinceLastFrame;
-    m_RotScale  = m_RotateSpeed * timeSinceLastFrame;
-
-    m_TranslateVector = Vector3::ZERO;
-
     getInput();
     moveCamera();
 }
@@ -333,48 +273,6 @@ void GameState::update(double timeSinceLastFrame)
 void GameState::buildGUI()
 {
     OgreFramework::getSingletonPtr()->m_pTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
-    OgreFramework::getSingletonPtr()->m_pTrayMgr->showLogo(OgreBites::TL_BOTTOMRIGHT);
-    OgreFramework::getSingletonPtr()->m_pTrayMgr->createLabel(OgreBites::TL_TOP, "GameLbl", "Game mode", 250);
     OgreFramework::getSingletonPtr()->m_pTrayMgr->showCursor();
 
-    Ogre::StringVector items;
-    items.push_back("cam.pX");
-    items.push_back("cam.pY");
-    items.push_back("cam.pZ");
-    items.push_back("cam.oW");
-    items.push_back("cam.oX");
-    items.push_back("cam.oY");
-    items.push_back("cam.oZ");
-    items.push_back("Mode");
-
-    m_pDetailsPanel = OgreFramework::getSingletonPtr()->m_pTrayMgr->createParamsPanel(OgreBites::TL_TOPLEFT, "DetailsPanel", 200, items);
-    m_pDetailsPanel->show();
-
-    Ogre::String infoText = "[TAB] - Switch input mode\n\n[W] - Forward / Mode up\n[S] - Backwards/ Mode down\n[A] - Left\n";
-    infoText.append("[D] - Right\n\nPress [SHIFT] to move faster\n\n[O] - Toggle FPS / logo\n");
-    infoText.append("[Print] - Take screenshot\n\n[ESC] - Exit");
-    OgreFramework::getSingletonPtr()->m_pTrayMgr->createTextBox(OgreBites::TL_RIGHT, "InfoPanel", infoText, 300, 220);
-
-    Ogre::StringVector chatModes;
-    chatModes.push_back("Solid mode");
-    chatModes.push_back("Wireframe mode");
-    chatModes.push_back("Point mode");
-    OgreFramework::getSingletonPtr()->m_pTrayMgr->createLongSelectMenu(OgreBites::TL_TOPRIGHT, "ChatModeSelMenu", "ChatMode", 200, 3, chatModes);
 }
-
-//|||||||||||||||||||||||||||||||||||||||||||||||
-
-void GameState::itemSelected(OgreBites::SelectMenu* menu)
-{
-    switch(menu->getSelectionIndex())
-    {
-    case 0:
-        m_pCamera->setPolygonMode(Ogre::PM_SOLID);break;
-    case 1:
-        m_pCamera->setPolygonMode(Ogre::PM_WIREFRAME);break;
-    case 2:
-        m_pCamera->setPolygonMode(Ogre::PM_POINTS);break;
-    }
-}
-
-//|||||||||||||||||||||||||||||||||||||||||||||||

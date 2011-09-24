@@ -47,7 +47,6 @@ public:
 	bool mouseReleased(const OIS::MouseEvent &arg, OIS::MouseButtonID id);
 
 	void onLeftPressed(const OIS::MouseEvent &evt);
-    void itemSelected(OgreBites::SelectMenu* menu);
 
 	void update(double timeSinceLastFrame);
 
@@ -57,7 +56,6 @@ private:
 	Ogre::MaterialPtr			m_pOgreHeadMat;
 	Ogre::MaterialPtr			m_pOgreHeadMatHigh;
 
-    OgreBites::ParamsPanel*		m_pDetailsPanel;
 	bool						m_bQuit;
 
 	Ogre::Vector3				m_TranslateVector;
