@@ -1,10 +1,10 @@
-﻿Build started 17/09/2011 10:56:31.
+﻿Build started 24/09/2011 12:32:47.
      1>Project "E:\SDK\GameApp\GameApp\GameApp.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\GameApp.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IE:\SDK\Ogre\include /IE:\SDK\Ogre\include\OIS /IE:\SDK\Ogre\include\OGRE /IE:\SDK\Ogre\Samples\Common\include /IE:\SDK\Ogre\boost_1_42 /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt MenuState.cpp
-         MenuState.cpp
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IE:\SDK\Ogre\include /IE:\SDK\Ogre\include\OIS /IE:\SDK\Ogre\include\OGRE /IE:\SDK\Ogre\Samples\Common\include /IE:\SDK\Ogre\boost_1_42 /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt GameState.cpp
+         GameState.cpp
        ManifestResourceCompile:
          All outputs are up-to-date.
        Link:
@@ -34,4 +34,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:21.70
+Time Elapsed 00:00:16.41
