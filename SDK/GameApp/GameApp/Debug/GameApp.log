@@ -1,4 +1,4 @@
-﻿Build started 28/09/2011 09:21:52.
+﻿Build started 28/09/2011 10:19:44.
      1>Project "E:\SDK\GameApp\GameApp\GameApp.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\GameApp.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -34,4 +34,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:11.28
+Time Elapsed 00:00:10.77

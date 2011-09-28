@@ -34,7 +34,7 @@ void GameState::enter()
     m_pRSQ->setQueryMask(OGRE_HEAD_MASK);
 
     m_pCamera = m_pSceneMgr->createCamera("GameCamera");
-    m_pCamera->setPosition(Vector3(5, 60, 60));
+    m_pCamera->setPosition(Vector3(500, 80, 110));
     m_pCamera->lookAt(Vector3(5, 20, 0));
     m_pCamera->setNearClipDistance(5);
 
