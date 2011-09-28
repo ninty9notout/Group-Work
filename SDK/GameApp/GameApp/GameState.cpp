@@ -17,6 +17,8 @@ GameState::GameState()
     m_bRMouseDown       = false;
     m_bQuit             = false;
     m_bSettingsMode     = false;
+
+    m_pDetailsPanel		= 0;
 }
 
 //|||||||||||||||||||||||||||||||||||||||||||||||
@@ -84,8 +86,50 @@ void GameState::exit()
 
 void GameState::createScene()
 {
-	//SCENE INFORMATION
-	m_pSceneMgr->setSkyBox(true, "Placeholder/Skybox1");
+    m_pSceneMgr->setAmbientLight(Ogre::ColourValue(1, 1, 1));
+    m_pSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
+
+	//Create Ground Plane
+    Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
+    Ogre::MeshManager::getSingleton().createPlane("ground", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+        plane, 1500, 100, 20, 20, true, 1, 1, 1, Ogre::Vector3::UNIT_Z);
+    Ogre::Entity* groundEntity = m_pSceneMgr->createEntity("GroundEnt", "ground");
+	Ogre::SceneNode* groundNode = m_pSceneMgr->getRootSceneNode()->createChildSceneNode("groundNode", Ogre::Vector3(100, 0, 0));
+	groundNode->attachObject(groundEntity);
+	groundEntity->setMaterialName("Placeholder/ground1");
+    groundEntity->setCastShadows(false);
+
+	//Create Background 1 Plane
+	Ogre::MeshManager::getSingleton().createPlane("background1", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+        plane, 1500, 30, 20, 20, true, 1, 1, 1, Ogre::Vector3::UNIT_Z);
+	Ogre::Entity* background1Entity = m_pSceneMgr->createEntity("background1Entity", "background1");
+	Ogre::SceneNode* background1Node = m_pSceneMgr->getRootSceneNode()->createChildSceneNode("background1Node", Ogre::Vector3(100, 15, -50));
+	background1Node->attachObject(background1Entity);
+	background1Node->pitch( Ogre::Degree(90.0f));;
+	background1Entity->setMaterialName("Placeholder/background1");
+    background1Entity->setCastShadows(false);
+
+	//Create Background 2 Plane
+	Ogre::MeshManager::getSingleton().createPlane("background2", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+        plane, 1500, 50, 20, 20, true, 1, 1, 1, Ogre::Vector3::UNIT_Z);
+	Ogre::Entity* background2Entity = m_pSceneMgr->createEntity("background2Entity", "background2");
+	Ogre::SceneNode* background2Node = m_pSceneMgr->getRootSceneNode()->createChildSceneNode("background2Node", Ogre::Vector3(100, 25, -52));
+	background2Node->attachObject(background2Entity);
+	background2Node->pitch( Ogre::Degree(90.0f));;
+	background2Entity->setMaterialName("Placeholder/background2");
+    background2Entity->setCastShadows(false);
+
+	//Create Background 3 Plane
+	Ogre::MeshManager::getSingleton().createPlane("background3", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+        plane, 1500, 70, 20, 20, true, 1, 1, 1, Ogre::Vector3::UNIT_Z);
+	Ogre::Entity* background3Entity = m_pSceneMgr->createEntity("background3Entity", "background3");
+	Ogre::SceneNode* background3Node = m_pSceneMgr->getRootSceneNode()->createChildSceneNode("background3Node", Ogre::Vector3(100, 35, -54));
+	background3Node->attachObject(background3Entity);
+	background3Node->pitch( Ogre::Degree(90.0f));;
+	background3Entity->setMaterialName("Placeholder/background3");
+    background3Entity->setCastShadows(false);
+
+	m_pSceneMgr->setSkyBox(true, "Placeholder/skybox1");
 }
 
 //|||||||||||||||||||||||||||||||||||||||||||||||
@@ -115,6 +159,19 @@ bool GameState::keyPressed(const OIS::KeyEvent &keyEventRef)
         return true;
     }
 
+    if(OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_I))
+    {
+        if(m_pDetailsPanel->getTrayLocation() == OgreBites::TL_NONE)
+        {
+            OgreFramework::getSingletonPtr()->m_pTrayMgr->moveWidgetToTray(m_pDetailsPanel, OgreBites::TL_TOPLEFT, 0);
+            m_pDetailsPanel->show();
+        }
+        else
+        {
+            OgreFramework::getSingletonPtr()->m_pTrayMgr->removeWidgetFromTray(m_pDetailsPanel);
+            m_pDetailsPanel->hide();
+        }
+    }
 
     if(OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_TAB))
     {
@@ -122,6 +179,10 @@ bool GameState::keyPressed(const OIS::KeyEvent &keyEventRef)
         return true;
     }
 
+    if(m_bSettingsMode && OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_RETURN) ||
+        OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_NUMPADENTER))
+    {
+    }
 
     if(!m_bSettingsMode || (m_bSettingsMode && !OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_O)))
         OgreFramework::getSingletonPtr()->keyPressed(keyEventRef);
@@ -156,14 +217,7 @@ bool GameState::mouseMoved(const OIS::MouseEvent &evt)
 
 bool GameState::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
 {
-    if(OgreFramework::getSingletonPtr()->m_pTrayMgr->injectMouseDown(evt, id)) return true;
-
-    if(id == OIS::MB_Left)
-    {
-        onLeftPressed(evt);
-        m_bLMouseDown = true;
-    }
-    else if(id == OIS::MB_Right)
+    if(id == OIS::MB_Right)
     {
         m_bRMouseDown = true;
     }
@@ -177,11 +231,7 @@ bool GameState::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
 {
     if(OgreFramework::getSingletonPtr()->m_pTrayMgr->injectMouseUp(evt, id)) return true;
 
-    if(id == OIS::MB_Left)
-    {
-        m_bLMouseDown = false;
-    }
-    else if(id == OIS::MB_Right)
+	if(id == OIS::MB_Right)
     {
         m_bRMouseDown = false;
     }
@@ -193,33 +243,7 @@ bool GameState::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
 
 void GameState::onLeftPressed(const OIS::MouseEvent &evt)
 {
-    if(m_pCurrentObject)
-    {
-        m_pCurrentObject->showBoundingBox(false);
-        m_pCurrentEntity->getSubEntity(1)->setMaterial(m_pOgreHeadMat);
-    }
 
-    Ogre::Ray mouseRay = m_pCamera->getCameraToViewportRay(OgreFramework::getSingletonPtr()->m_pMouse->getMouseState().X.abs / float(evt.state.width),
-        OgreFramework::getSingletonPtr()->m_pMouse->getMouseState().Y.abs / float(evt.state.height));
-    m_pRSQ->setRay(mouseRay);
-    m_pRSQ->setSortByDistance(true);
-
-    Ogre::RaySceneQueryResult &result = m_pRSQ->execute();
-    Ogre::RaySceneQueryResult::iterator itr;
-
-    for(itr = result.begin(); itr != result.end(); itr++)
-    {
-        if(itr->movable)
-        {
-            OgreFramework::getSingletonPtr()->m_pLog->logMessage("MovableName: " + itr->movable->getName());
-            m_pCurrentObject = m_pSceneMgr->getEntity(itr->movable->getName())->getParentSceneNode();
-            OgreFramework::getSingletonPtr()->m_pLog->logMessage("ObjName " + m_pCurrentObject->getName());
-            m_pCurrentObject->showBoundingBox(true);
-            m_pCurrentEntity = m_pSceneMgr->getEntity(itr->movable->getName());
-            m_pCurrentEntity->getSubEntity(1)->setMaterial(m_pOgreHeadMatHigh);
-            break;
-        }
-    }
 }
 
 //|||||||||||||||||||||||||||||||||||||||||||||||
@@ -264,6 +288,29 @@ void GameState::update(double timeSinceLastFrame)
         return;
     }
 
+    if(!OgreFramework::getSingletonPtr()->m_pTrayMgr->isDialogVisible())
+    {
+        if(m_pDetailsPanel->isVisible())
+        {
+            m_pDetailsPanel->setParamValue(0, Ogre::StringConverter::toString(m_pCamera->getDerivedPosition().x));
+            m_pDetailsPanel->setParamValue(1, Ogre::StringConverter::toString(m_pCamera->getDerivedPosition().y));
+            m_pDetailsPanel->setParamValue(2, Ogre::StringConverter::toString(m_pCamera->getDerivedPosition().z));
+            m_pDetailsPanel->setParamValue(3, Ogre::StringConverter::toString(m_pCamera->getDerivedOrientation().w));
+            m_pDetailsPanel->setParamValue(4, Ogre::StringConverter::toString(m_pCamera->getDerivedOrientation().x));
+            m_pDetailsPanel->setParamValue(5, Ogre::StringConverter::toString(m_pCamera->getDerivedOrientation().y));
+            m_pDetailsPanel->setParamValue(6, Ogre::StringConverter::toString(m_pCamera->getDerivedOrientation().z));
+            if(m_bSettingsMode)
+                m_pDetailsPanel->setParamValue(7, "Buffered Input");
+            else
+                m_pDetailsPanel->setParamValue(7, "Un-Buffered Input");
+        }
+    }
+
+    m_MoveScale = m_MoveSpeed   * timeSinceLastFrame;
+    m_RotScale  = m_RotateSpeed * timeSinceLastFrame;
+
+    m_TranslateVector = Vector3::ZERO;
+
     getInput();
     moveCamera();
 }
@@ -273,6 +320,21 @@ void GameState::update(double timeSinceLastFrame)
 void GameState::buildGUI()
 {
     OgreFramework::getSingletonPtr()->m_pTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
+    //OgreFramework::getSingletonPtr()->m_pTrayMgr->createLabel(OgreBites::TL_TOP, "GameLbl", "Game mode", 250);
     OgreFramework::getSingletonPtr()->m_pTrayMgr->showCursor();
 
+    Ogre::StringVector items;
+    items.push_back("cam.pX");
+    items.push_back("cam.pY");
+    items.push_back("cam.pZ");
+    items.push_back("cam.oW");
+    items.push_back("cam.oX");
+    items.push_back("cam.oY");
+    items.push_back("cam.oZ");
+    items.push_back("Mode");
+
+    m_pDetailsPanel = OgreFramework::getSingletonPtr()->m_pTrayMgr->createParamsPanel(OgreBites::TL_TOPLEFT, "DetailsPanel", 200, items);
+    m_pDetailsPanel->show();
 }
+
+//|||||||||||||||||||||||||||||||||||||||||||||||

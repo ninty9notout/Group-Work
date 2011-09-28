@@ -60,6 +60,7 @@
       <AdditionalLibraryDirectories>E:\SDK\Ogre\lib\$(Configuration);E:\SDK\Ogre\boost_1_42\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>OgreTerrain_d.lib;OgreMain_d.lib;OIS_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent />
     <PostBuildEvent>
       <Command>copy "$(OutDir)\$(TargetFileName)" "E:\SDK\Ogre\Bin\$(Configuration)"</Command>
     </PostBuildEvent>

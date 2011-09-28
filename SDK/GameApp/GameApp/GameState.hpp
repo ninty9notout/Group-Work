@@ -56,6 +56,7 @@ private:
 	Ogre::MaterialPtr			m_pOgreHeadMat;
 	Ogre::MaterialPtr			m_pOgreHeadMatHigh;
 
+    OgreBites::ParamsPanel*		m_pDetailsPanel;
 	bool						m_bQuit;
 
 	Ogre::Vector3				m_TranslateVector;

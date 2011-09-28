@@ -1,4 +1,56 @@
-material Placeholder/Skybox1
+material Placeholder/ground1
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture ground1.png
+			}
+		}
+	}
+}
+material Placeholder/background1
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture background1.png
+			}
+		}
+	}
+}
+material Placeholder/background2
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture background2.png
+			}
+		}
+	}
+}
+material Placeholder/background3
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture background3.png
+			}
+		}
+	}
+}
+material Placeholder/skybox1
 {
 	technique
 	{
